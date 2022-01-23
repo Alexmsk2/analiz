@@ -3,9 +3,9 @@
 using namespace std;
 int main()
 {
-	string s = "jksdhfksjhdkfjkskdsldk;llsldk;lsdk;sldla'ad/'''''ddda;;;;;;;;.d,faadnkahdlkakjdbmadbckjabdkjabdj";
+	string s = "meet my mum and dad", alf = "abcdefghiklmnopqrstvxyzABCDEFGHIKLMNOPRSTVXYZ";
 	char a;
-	int b=1,c=0;
+	int b = 1, c = 0, d = 0;
 	for (int i = 0; i < s.length(); i++) {
 		b = 1;
 		for (int j = 0;j < s.length();j++) {
@@ -19,6 +19,32 @@ int main()
 			c = b;
 		}
 	}
-	cout << "simvol -- '" << a<<"'"<< endl << "kolichestvo raz -- " << c;
-   
+	cout << "simvol -- '" << a<<"'"<< endl << "kolichestvo raz -- " << c<<endl<< "vvedite sdvig"<<endl;
+	cin >> d;
+	cout << "zashifrovanoe sms"<<endl;
+	for (int i = 0; i < s.length(); i++) {
+		for (int j = 0;j < alf.length();j++) {
+			if (s[i] == alf[j]) {
+				if ((j + d) > 45)
+					s[i] = alf[j + d - 45];
+				else
+					s[i] = alf[j + d];
+
+			}
+		}
+		cout << s[i];
+	}
+	cout <<endl<< "rashifrovanoe sms"<<endl;
+	for (int i = 0; i < s.length(); i++) {
+		for (int j = 0;j < alf.length();j++) {
+			if (s[i] == alf[j]) {
+				if ((j - d) <0)
+					s[i] = alf[j - d + 45];
+				else
+					s[i] = alf[j - d];
+
+			}
+		}
+		cout << s[i];
+	}
 }
