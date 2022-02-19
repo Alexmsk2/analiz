@@ -1,17 +1,36 @@
+
+
 #include <iostream>
 #include <string>
 using namespace std;
 int main()
 {
-	string s = "meet my mum and dad", alf = "abcdefghiklmnopqrstvxyzABCDEFGHIKLMNOPRSTVXYZ";
+	string s = "Christmas is one of the most popular holidays on the planet. It seems strange but not everybody celebrate such a great holiday. It depends on the religion and the culture of people", alf = "abcdefghiklmnopqrstvxyzABCDEFGHIKLMNOPRSTVXYZ";
 	char a;
 	int b = 1, c = 0, d = 0;
+	cout << "vvedite sdvig";
+	cin >> d;
+	cout << "zashifrovanoe sms" << endl;
+	for (int i = 0; i < s.length(); i++) {
+		for (int j = 0;j < alf.length();j++) {
+			if (s[i] == alf[j]) {
+				if ((j + d) > 45)
+					s[i] = alf[j + d - 45];
+				else
+					s[i] = alf[j + d];
+				break;
+
+			}
+		}
+		cout << s[i];
+	}
+	int r = 0;
 	for (int i = 0; i < s.length(); i++) {
 		b = 1;
 		for (int j = 0;j < s.length();j++) {
-			if (i != j) {
-				if (s[i] == s[j]) 
-					b++;				
+			if (i != j && s[i]!=' ') {
+				if (s[i] == s[j])
+					b++;
 			}
 		}
 		if (b > c) {
@@ -19,9 +38,18 @@ int main()
 			c = b;
 		}
 	}
-	cout << "simvol -- '" << a<<"'"<< endl << "kolichestvo raz -- " << c<<endl<< "vvedite sdvig"<<endl;
-	cin >> d;
-	cout << "zashifrovanoe sms"<<endl;
+	
+	for (int i = 0; i < alf.length(); i++) {
+		if (a == alf[i])
+		{
+			r = i;
+			break;
+		} 
+	}
+	
+	cout << "simvol -- '" << a << "'" << endl << "kolichestvo raz -- " << c << endl<< r;
+	//cin >> d;
+	/*cout << "zashifrovanoe sms" << endl;
 	for (int i = 0; i < s.length(); i++) {
 		for (int j = 0;j < alf.length();j++) {
 			if (s[i] == alf[j]) {
@@ -33,18 +61,33 @@ int main()
 			}
 		}
 		cout << s[i];
-	}
-	cout <<endl<< "rashifrovanoe sms"<<endl;
-	for (int i = 0; i < s.length(); i++) {
-		for (int j = 0;j < alf.length();j++) {
-			if (s[i] == alf[j]) {
-				if ((j - d) <0)
-					s[i] = alf[j - d + 45];
-				else
-					s[i] = alf[j - d];
+	}*/
 
+	d = r - 4;
+		cout << endl << "rashifrovanoe sms" << endl;
+		for (int i = 0; i < s.length(); i++) {
+			for (int j = 0;j < alf.length();j++) {
+				if (s[i] == alf[j]) {
+					if ((j - d) < 0)
+						s[i] = alf[j - d + 45];
+					else
+						s[i] = alf[j - d];
+					break;
+				}
 			}
+			cout << s[i];
 		}
-		cout << s[i];
-	}
+
+	
 }
+
+// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
+// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+
+// Советы по началу работы 
+//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
+//   2. В окне Team Explorer можно подключиться к системе управления версиями.
+//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
+//   4. В окне "Список ошибок" можно просматривать ошибки.
+//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
+//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
